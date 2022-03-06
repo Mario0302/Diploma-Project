@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using HotelsBG.Models;
 
 namespace HotelsBG.Data
 {
@@ -14,5 +15,6 @@ namespace HotelsBG.Data
         {
             this.Database.EnsureCreated();
         }
+        public DbSet<HotelsBG.Models.ClientBindingAllViewModel> ClientBindingAllViewModel { get; set; }
     }
 }
