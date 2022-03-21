@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HotelsBG.Models;
+using HotelsBG.Domain;
 
 namespace HotelsBG.Data
 {
@@ -15,6 +16,9 @@ namespace HotelsBG.Data
         {
             this.Database.EnsureCreated();
         }
+        public DbSet<Room> Rooms { get; set; }
         public DbSet<HotelsBG.Models.ClientBindingAllViewModel> ClientBindingAllViewModel { get; set; }
+        public DbSet<HotelsBG.Models.RoomCreateViewModel> RoomCreateViewModel { get; set; }
+        public DbSet<HotelsBG.Models.RoomAllViewModel> RoomAllViewModel { get; set; }
     }
 }
