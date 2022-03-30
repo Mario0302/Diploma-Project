@@ -14,14 +14,20 @@ namespace HotelsBG.Domain
         [Required]
         public string RoomName { get; set; }
         public string CategoryId { get; set; }
+        public virtual Category Category { get; set; }
         [Required]
         public string Description { get; set; }
         public string Picture { get; set; }
         [Required]
         [Range(50, 4000)]
-        public decimal Price { get; set; }
-        public decimal Discount { get; set; }
-        public decimal Number { get; set; }
-        public string Exstras { get; set; }
+        public int Price { get; set; }
+        public int Discount { get; set; }
+        public int NumberOfBed { get; set; }
+
+             public string Extras { get; set; }
+
+        public virtual IEnumerable<Reservation> Reservations { get; set; }
+        public virtual IEnumerable<Service> Services { get; set; }
+        public virtual IEnumerable<Category> Categories { get; set; }
     }
     }

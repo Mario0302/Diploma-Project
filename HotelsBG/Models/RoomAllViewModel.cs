@@ -21,15 +21,15 @@ namespace HotelsBG.Models
         
         [Range(50, 4000, ErrorMessage = "Price must be between 50 and 4000 ")]
         [Display(Name = "Price per day")]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         
         [Display(Name = "Percent discount")]
-        public decimal Discount { get; set; }
+        public int Discount { get; set; }
         
         [Display(Name = "Number beds")]
-        public decimal Number { get; set; }
+        public int NumberOfBed { get; set; }
         
-        [Display(Name = "Exstras")]
-        public string Exstras { get; set; }
+        [Display(Name = "Extras")]
+        public string Extras { get; set; }
     }
 }

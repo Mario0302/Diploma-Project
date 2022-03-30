@@ -37,8 +37,8 @@ namespace HotelsBG.Controllers
                     Picture = bindingModel.Picture,
                     Price = bindingModel.Price,
                     Discount = bindingModel.Discount,
-                    Number=bindingModel.Number,
-                    Exstras=bindingModel.Exstras
+                    NumberOfBed = bindingModel.NumberOfBed,
+                    Extras=bindingModel.Extras
                 };
                 context.Rooms.Add(roomFromDb);
                 context.SaveChanges();
@@ -57,14 +57,12 @@ namespace HotelsBG.Controllers
             {
                 Id = roomFromDb.Id,
                 RoomName = roomFromDb.RoomName,
-                //Category = productFromDb.Category,
-                //Brand = productFromDb.Brand,
                 Description = roomFromDb.Description,
                 Picture = roomFromDb.Picture,
                 Price = roomFromDb.Price,
-                Number = roomFromDb.Number,
+                NumberOfBed = roomFromDb.NumberOfBed,
                 Discount = roomFromDb.Discount,
-                Exstras=roomFromDb.Exstras
+                Extras=roomFromDb.Extras
             }).ToList();
             if (!String.IsNullOrEmpty(searchStringModel))
             {
@@ -95,8 +93,8 @@ namespace HotelsBG.Controllers
                 Picture = item.Picture,
                 Price = item.Price,
                 Discount=item.Discount,
-                Number = item.Number,
-                Exstras = item.Exstras
+                NumberOfBed = item.NumberOfBed,
+                Extras = item.Extras
 
             };
             return View(product);
@@ -115,8 +113,8 @@ namespace HotelsBG.Controllers
                     Picture = bindingModel.Picture,
                     Price = bindingModel.Price,
                     Discount = bindingModel.Discount,
-                    Number = bindingModel.Number,
-                    Exstras = bindingModel.Exstras
+                    NumberOfBed = bindingModel.NumberOfBed,
+                    Extras = bindingModel.Extras
                 };
                 context.Rooms.Update(room);
                 context.SaveChanges();
@@ -144,8 +142,8 @@ namespace HotelsBG.Controllers
                 Picture = item.Picture,
                 Price = item.Price,
                 Discount = item.Discount,
-                Number = item.Number,
-                Exstras = item.Exstras
+                NumberOfBed = item.NumberOfBed,
+                Extras = item.Extras
             };
             return View(room);
         }
