@@ -27,7 +27,7 @@ namespace HotelsBG.Domain
              public string Extras { get; set; }
 
         public virtual IEnumerable<Reservation> Reservations { get; set; }
-        public virtual IEnumerable<Service> Services { get; set; }
-        public virtual IEnumerable<Category> Categories { get; set; }
+        
+      
     }
     }

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<HotelsBG.Models.ReservationAllViewModel>
+
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1>All Reservation</h1>
+
+<p>
+    <a asp-action="Create">Create New Reservation</a>
+    <form asp-controller="Reservation" asp-action="All Reservation" method="get">
+        <p>
+            Type: <input type="text" name="SearchStringBrand" />
+
+            @*Brand: <input type="text" name="SearchStrinBrand" />
+
+                Price: <input type="text" name="SearchStringPrice" />*@
+            <input type="submit" value="Filter" <button type="button" class="btn btn-info"></button>
+        </p>
+    </form>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccommodationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeavingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccommodationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeavingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

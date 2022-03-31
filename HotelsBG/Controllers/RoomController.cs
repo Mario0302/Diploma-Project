@@ -84,7 +84,7 @@ namespace HotelsBG.Controllers
             {
                 return NotFound();
             }
-            RoomCreateViewModel product = new RoomCreateViewModel()
+            RoomCreateViewModel room = new RoomCreateViewModel()
 
             {
                 Id = item.Id,
@@ -97,7 +97,7 @@ namespace HotelsBG.Controllers
                 Extras = item.Extras
 
             };
-            return View(product);
+            return View(room);
         }
 
         [HttpPost]

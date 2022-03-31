@@ -17,8 +17,13 @@ namespace HotelsBG.Data
             this.Database.EnsureCreated();
         }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<HotelsBG.Models.ClientBindingAllViewModel> ClientBindingAllViewModel { get; set; }
-        public DbSet<HotelsBG.Models.RoomCreateViewModel> RoomCreateViewModel { get; set; }
-        public DbSet<HotelsBG.Models.RoomAllViewModel> RoomAllViewModel { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        //public DbSet<HotelsBG.Models.ClientBindingAllViewModel> ClientBindingAllViewModel { get; set; }
+        //public DbSet<HotelsBG.Models.RoomCreateViewModel> RoomCreateViewModel { get; set; }
+        //public DbSet<HotelsBG.Models.RoomAllViewModel> RoomAllViewModel { get; set; }
+        //public DbSet<HotelsBG.Models.ReservationAllViewModel> ReservationAllViewModel { get; set; }
+        //public DbSet<HotelsBG.Models.ReservationCreateViewModel> ReservationCreateViewModel { get; set; }
     }
 }
