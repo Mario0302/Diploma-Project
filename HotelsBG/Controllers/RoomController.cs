@@ -1,6 +1,7 @@
 ﻿using HotelsBG.Data;
 using HotelsBG.Domain;
 using HotelsBG.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -50,8 +51,8 @@ namespace HotelsBG.Controllers
         {
             return this.View();
         }
-
-        public IActionResult All(string searchStringModel)
+        [AllowAnonymous]
+        public ActionResult All(string searchStringModel)
         {
             List<RoomAllViewModel> rooms = context.Rooms.Select(roomFromDb => new RoomAllViewModel
             {
