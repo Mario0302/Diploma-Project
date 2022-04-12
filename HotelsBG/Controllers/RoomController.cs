@@ -1,6 +1,8 @@
-﻿using HotelsBG.Data;
+﻿using HotelsBG.Abstraction;
+using HotelsBG.Data;
 using HotelsBG.Domain;
 using HotelsBG.Models;
+using HotelsBG.Models.Category;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,9 +15,12 @@ namespace HotelsBG.Controllers
     public class RoomController : Controller
     {
         private readonly ApplicationDbContext context;
-        public RoomController(ApplicationDbContext context)
+        private readonly ICategoryService _categoryService;
+
+        public RoomController(ApplicationDbContext context, ICategoryService categoryService)
         {
             this.context = context;
+            this._categoryService = categoryService;
         }
         public IActionResult Index()
         {
@@ -23,24 +28,44 @@ namespace HotelsBG.Controllers
         }
         public IActionResult Create()
         {
-            return this.View();
+            var room = new RoomCreateViewModel();
+            room.Categories = _categoryService.GetCategories()
+               .Select(c => new CategoryPairVM()
+               {
+                   Id = c.Id,
+                   CategoryName = c.Name,
+               })
+               .ToList();
+
+            return this.View(room);
         }
         [HttpPost]
         public IActionResult Create(RoomCreateViewModel bindingModel)
         {
             if (ModelState.IsValid)
             {
+                bindingModel.Categories = _categoryService.GetCategories()
+              .Select(c => new CategoryPairVM()
+              {
+                  Id = c.Id,
+                  CategoryName = c.Name
+              })
+              .ToList();
+
                 Room roomFromDb = new Room
                 {
                     Id = bindingModel.Id,
                    RoomName = bindingModel.RoomName,
                     Description = bindingModel.Description,
                     Picture = bindingModel.Picture,
+                    CategoryId=bindingModel.CategoryId,
                     Price = bindingModel.Price,
                     Discount = bindingModel.Discount,
                     NumberOfBed = bindingModel.NumberOfBed,
                     Extras=bindingModel.Extras
                 };
+
+              
                 context.Rooms.Add(roomFromDb);
                 context.SaveChanges();
                 return this.RedirectToAction("Success");
@@ -60,6 +85,8 @@ namespace HotelsBG.Controllers
                 RoomName = roomFromDb.RoomName,
                 Description = roomFromDb.Description,
                 Picture = roomFromDb.Picture,
+                CategoryId=roomFromDb.CategoryId,
+               CategoryName= roomFromDb.Category.Name,
                 Price = roomFromDb.Price,
                 NumberOfBed = roomFromDb.NumberOfBed,
                 Discount = roomFromDb.Discount,
@@ -92,12 +119,21 @@ namespace HotelsBG.Controllers
                 RoomName = item.RoomName,
                 Description = item.Description,
                 Picture = item.Picture,
+                CategoryId=item.CategoryId,
                 Price = item.Price,
                 Discount=item.Discount,
                 NumberOfBed = item.NumberOfBed,
                 Extras = item.Extras
 
             };
+
+            room.Categories = _categoryService.GetCategories()
+              .Select(c => new CategoryPairVM()
+              {
+                  Id = c.Id,
+                  CategoryName = c.Name
+              })
+              .ToList();
             return View(room);
         }
 
@@ -112,6 +148,7 @@ namespace HotelsBG.Controllers
                     RoomName = bindingModel.RoomName,
                     Description = bindingModel.Description,
                     Picture = bindingModel.Picture,
+                    CategoryId = bindingModel.CategoryId,
                     Price = bindingModel.Price,
                     Discount = bindingModel.Discount,
                     NumberOfBed = bindingModel.NumberOfBed,
@@ -141,6 +178,7 @@ namespace HotelsBG.Controllers
                 RoomName = item.RoomName,
                 Description = item.Description,
                 Picture = item.Picture,
+                CategoryId=item.CategoryId,
                 Price = item.Price,
                 Discount = item.Discount,
                 NumberOfBed = item.NumberOfBed,

@@ -1,6 +1,8 @@
+using HotelsBG.Abstraction;
 using HotelsBG.Data;
 using HotelsBG.Entities;
 using HotelsBG.Infrasturcture;
+using HotelsBG.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,8 +32,9 @@ namespace HotelsBG
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+             options.UseLazyLoadingProxies()
+                 .UseSqlServer(
+                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<ApplicationUser>()
@@ -40,7 +43,13 @@ namespace HotelsBG
             .AddDefaultTokenProviders();
             services.AddControllersWithViews();
 
+            services.AddTransient<ICategoryService, CategoryService>();
+
+
             services.AddRazorPages();
+
+           
+
             services.Configure<IdentityOptions>(option =>
             {
                 option.Password.RequireDigit = false;

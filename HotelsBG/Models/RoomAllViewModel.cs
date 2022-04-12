@@ -18,10 +18,14 @@ namespace HotelsBG.Models
         
         [Display(Name = "Picture")]
         public string Picture { get; set; }
-        
+
+        public int CategoryId { get; set; }
+        [Display(Name = "Category")]
+        public string CategoryName { get; set; }
+
         [Range(50, 4000, ErrorMessage = "Price must be between 50 and 4000 ")]
         [Display(Name = "Price per day")]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         
         [Display(Name = "Percent discount")]
         public int Discount { get; set; }

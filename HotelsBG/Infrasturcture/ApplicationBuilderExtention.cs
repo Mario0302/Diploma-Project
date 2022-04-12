@@ -1,4 +1,6 @@
-﻿using HotelsBG.Entities;
+﻿using HotelsBG.Data;
+using HotelsBG.Domain;
+using HotelsBG.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +19,12 @@ namespace HotelsBG.Infrasturcture
             var services = serviceScope.ServiceProvider;
             await RoleSeeder(services);
             await SeedAdministrator(services);
+           
+var dataCategory = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedCategories(dataCategory);
+
             return app;
+
         }
         private static async Task RoleSeeder(IServiceProvider serviceProvider)
         {
@@ -49,6 +56,22 @@ namespace HotelsBG.Infrasturcture
                 }
             }
         }
+        private static void SeedCategories(ApplicationDbContext data)
+        {
+            if (data.Categories.Any())
+            {
+                return;
+            }
+            data.Categories.AddRange(new[]
+            {
+                new Category {Name="single room"},
+                new Category {Name="double room"},
+                new Category {Name="studio"},
+                new Category {Name="apartment"},
+
+            });
+            data.SaveChanges();
         }
+    }
     }
 
