@@ -10,6 +10,7 @@ namespace HotelsBG.Domain
     public class Room
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
         [Required]
         public string RoomName { get; set; }
@@ -26,7 +27,7 @@ namespace HotelsBG.Domain
 
      public string Extras { get; set; }
 
-        public virtual IEnumerable<Reservation> Reservations { get; set; }
+        public virtual IEnumerable<ReservationRoom> ReservationRooms { get; set; }
         
       
     }

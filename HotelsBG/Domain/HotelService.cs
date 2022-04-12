@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelsBG.Domain
 {
-    public class Service
+    public class HotelService
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

@@ -50,6 +50,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Extras)
             </th>
+            <th>
+                Action
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -83,6 +86,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Extras)
+            </td>
+            <td>
+                @await Html.PartialAsync("_OrderPartial",new ReservationCreateBindingModel
+           {
+               RoomId = item.Id
+           })
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
