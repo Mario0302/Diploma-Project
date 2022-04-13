@@ -22,22 +22,32 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ForUs" asp-action="Info">
+                                For us
+                            </a>
                         </li>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Room" asp-action="All">Оферти</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="All">Reservation</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="Index">Reservation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="My">MyReservation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HotelService" asp-action="All">Services</a>
+                        </li>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Room" asp-action="Statistic">Statistic</a>
                         </li>
                         @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                         {
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Client"
                            asp-action="AllClients">Clients</a>
-                    </li>}
+                    </li>
+}
                         <li class="nav-item active">
                             <div class="dropdown show">
                                 <a class="nav-link active" dropdown-toggle href="#"
@@ -45,7 +55,7 @@
                                    data-toggle="dropdown"
                                    aria-haspopup="true"
                                    aria-expanded="false">
-                                    Offers
+
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item" href="/Offers/Index">All</a>

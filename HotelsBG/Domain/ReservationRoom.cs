@@ -28,7 +28,22 @@ namespace HotelsBG.Domain
         //public int DayCount { get { return LeavingDate - AccommodationDate; } }
         //   public decimal TotalPrice { get{ return (Price - Price * Discount / 100)*dayCount; } }
 
-        public decimal TotalPrice { get { return Price - Price * Discount / 100; } }
+        public int DayCount
+        {
+            get
+            {
+                return (int)((LeavingDate - AccommodationDate)).TotalDays;
+            }
+        }
+
+       
+        public decimal TotalPrice
+        {
+            get
+            {
+                return (Price - Price * Discount / 100) * DayCount;
+            }
+        }
 
     }
 }

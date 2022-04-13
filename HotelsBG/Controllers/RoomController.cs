@@ -198,5 +198,15 @@ namespace HotelsBG.Controllers
             context.SaveChanges();
             return this.RedirectToAction("All");
         }
+
+        public IActionResult Statistic()
+        {
+            StatisticVM statistic = new StatisticVM();
+
+            statistic.roomCount = context.Rooms.Count();
+            statistic.countUsers = context.Users.Count();
+            statistic.countReservations = context.Reservations.Count();
+            return View(statistic);
+        }
     }
 }
