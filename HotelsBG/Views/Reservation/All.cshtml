@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HotelsBG.Models.ReservationAllViewModel>
+﻿@model IEnumerable<HotelsBG.Models.ReservationRoom.ReservationCreateBindingModel>
 
 @{
     ViewData["Title"] = "All";
@@ -22,9 +22,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ReservationDate)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.AccommodationDate)
             </th>
@@ -34,9 +32,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.RoomId)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ServiceId)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -44,9 +40,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReservationDate)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.AccommodationDate)
                 </td>
@@ -56,9 +50,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.RoomId)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServiceId)
-                </td>
+                
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

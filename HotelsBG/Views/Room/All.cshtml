@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<HotelsBG.Models.RoomAllViewModel>
-
 @{
     ViewData["Title"] = "All";
 }
@@ -37,7 +36,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Picture)
             </th>
-          
+
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
@@ -57,48 +56,51 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoomName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
 
-            <td>
+                <td>
 
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @*Html.DisplayFor(modelItem => item.Picture)*@
-                <img src="@Html.DisplayFor(modelItem=>item.Picture)" alt="Image" width="100px" />
-            </td>
-            <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @*Html.DisplayFor(modelItem => item.Picture)*@
+                    <img src="@Html.DisplayFor(modelItem=>item.Picture)" alt="Image" width="100px" />
+                </td>
+                <td>
 
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfBed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Extras)
-            </td>
-            <td>
-                @await Html.PartialAsync("_OrderPartial",new ReservationCreateBindingModel
-           {
-               RoomId = item.Id
-           })
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfBed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Extras)
+                </td>
+                <td>
+                    @await Html.PartialAsync("_OrderPartial", new ReservationCreateBindingModel
+               {
+                        RoomId = item.Id
+               })
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+
+            </tr>
+        }
     </tbody>
 </table>
