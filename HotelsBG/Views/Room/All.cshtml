@@ -9,17 +9,19 @@
 
 <p>
     <a asp-action="Create">Create New Room</a>
+</p>
     <form asp-controller="Room" asp-action="All" method="get">
         <p>
-            Type: <input type="text" name="SearchStringBrand" />
+            Type: <input type="text" name="SearchStringModel" />
 
             @*Brand: <input type="text" name="SearchStrinBrand" />
 
                 Price: <input type="text" name="SearchStringPrice" />*@
-            <input type="submit" value="Filter" <button type="button" class="btn btn-info"></button>
+            <input type="submit" value="Filter" />
+            @*<button type="button" class="btn btn-info"></button>*@
 
 
-        </p>
+
     </form>
 </p>
 <table class="table">

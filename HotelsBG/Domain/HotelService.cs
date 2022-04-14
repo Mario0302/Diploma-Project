@@ -10,6 +10,7 @@ namespace HotelsBG.Domain
     public class HotelService
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }

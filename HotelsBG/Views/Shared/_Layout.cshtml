@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HotelsBG</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -19,32 +19,32 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ForUs" asp-action="Info">
+                            <a class="nav-link text-white" asp-area="" asp-controller="ForUs" asp-action="Info">
                                 For us
                             </a>
                         </li>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Room" asp-action="All">Оферти</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Room" asp-action="All">Оферти</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="Index">Reservation</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Reservation" asp-action="Index">Reservation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="My">MyReservation</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Reservation" asp-action="My">MyReservation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HotelService" asp-action="All">Services</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="HotelService" asp-action="All">Services</a>
                         </li>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Room" asp-action="Statistic">Statistic</a>
+                        <a class="nav-link text-white" asp-area="" asp-controller="Room" asp-action="Statistic">Statistic</a>
                         </li>
                         @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                         {
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Client"
+                        <a class="nav-link text-white" asp-area="" asp-controller="Client"
                            asp-action="AllClients">Clients</a>
                     </li>
 }
@@ -79,7 +79,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - HotelsBG - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - HotelsBG  <a asp-area="" asp-controller="Home" asp-action="Privacy"></a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

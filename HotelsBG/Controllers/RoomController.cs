@@ -94,7 +94,7 @@ namespace HotelsBG.Controllers
             }).ToList();
             if (!String.IsNullOrEmpty(searchStringModel))
             {
-                rooms = rooms.Where(x => x.RoomName.ToLower() == searchStringModel.ToLower())
+                rooms = rooms.Where(x => x.CategoryName.ToLower() == searchStringModel.ToLower())
                     .ToList();
             }
             return this.View(rooms);
