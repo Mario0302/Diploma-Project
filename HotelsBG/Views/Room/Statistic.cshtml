@@ -2,8 +2,57 @@
 
 @{ ViewData["Title"] = "Statistic"; }
 
-<h1>Statistic</h1>
+@*<h1>Statistic</h1>
 
 <h4>Count of all rooms: @Model.roomCount</h4>
 <h4>Count of all users: @Model.countUsers</h4>
-<h4>Count of all reservations: @Model.countReservations</h4>
+<h4>Count of all reservations: @Model.countReservations</h4>*@
+<h4 class="text-center">Statistic</h4>
+<div class="text-center">
+    <div class="col-xl-8">
+
+        <div class="card-group pb-0">
+            <div class="card-columns text-center">
+
+            </div>
+
+        </div>
+        <table class="table table-striped " style="width:150%">
+            <thead>
+                <tr>
+                    <th>
+                        Count of all rooms:
+                    </th>
+                    <th>
+                        Count of all users:
+                    </th>
+                    <th> Count of all reservations:</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                <tr>
+
+
+                    <td>
+                        @Model.roomCount
+                    </td>
+                    <td>
+                        @Model.countUsers
+                    </td>
+
+                    <td>
+                        @Model.countReservations
+                    </td>
+
+
+                </tr>
+
+            </tbody>
+
+
+        </table>
+    </div>
+</div>

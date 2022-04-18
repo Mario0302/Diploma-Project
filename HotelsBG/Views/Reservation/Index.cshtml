@@ -1,89 +1,166 @@
 ﻿@model IEnumerable<HotelsBG.Models.ReservationRoom.ReservationAllViewModel>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
+<h1 class="text-center">All Reservation</h1>
+<body>
+    <div class="pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-13 p-4 bg-dark rounded shadow-sm mb-5">
 
-<h1>Index</h1>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 bg-secondary">
+                                        <div class="py-2 text-uppercase">ReservationDate</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-secondary">
+                                        <div class="py-2 text-uppercase">AccommodationDate</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-secondary">
+                                        <div class="p-2 px-3 text-uppercase">LeavingDate</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-secondary">
+                                        <div class="py-2 text-uppercase">RoomId</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-secondary">
+                                        <div class="py-2 text-uppercase">User</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-secondary">
+                                        <div class="py-2 text-uppercase">Price</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-secondary">
+                                        <div class="py-2 text-uppercase">DayCount</div>
+                                    </th>
+
+
+                                    <th scope="col" class="border-0 bg-secondary">
+                                        <div class="py-2 text-uppercase">Discount</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-secondary">
+                                        <div class="py-2 text-uppercase">TotalPrice</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                <tbody>
+                    <tr>
+                       
+                        <td class="border-0 align-middle"><strong> @Html.DisplayFor(modelItem => item.ReservationDate)</strong></td>
+                        <td class="border-0 align-middle"><strong> @Html.DisplayFor(modelItem => item.AccommodationDate)</strong></td>
+                        <td class="border-0 align-middle"><strong> @Html.DisplayFor(modelItem => item.LeavingDate)</strong></td>
+                        <td class="border-0 align-middle"><strong> @Html.DisplayFor(modelItem => item.RoomId)</strong></td>
+                        <td class="border-0 align-middle"><strong> @Html.DisplayFor(modelItem => item.User)</strong></td>
+                        <td class="border-0 align-middle"><strong> @Html.DisplayFor(modelItem => item.Price)</strong></td>
+                        <td class="border-0 align-middle"><strong> @Html.DisplayFor(modelItem => item.DayCount)</strong></td>
+                        <td class="border-0 align-middle"><strong> @Html.DisplayFor(modelItem => item.Discount)%</strong></td>
+
+                        <td class="border-0 align-middle"><strong> @Html.DisplayFor(modelItem => item.TotalPrice)</strong></td>
+                    </tr>
+
+                </tbody>
+}
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body {
+        background: #FE1010;
+        background: -webkit-linear-gradient(to right, #FF2626, #FF0000);
+        background: linear-gradient(to right, #FF2626, #FF0000);
+        min-height: 100vh;
+    }
+</style>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 
 @*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ReservationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AccommodationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeavingDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RoomId)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Discount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DayCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalPrice)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReservationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccommodationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeavingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoomId)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.User)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DayCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
-            </td>
-            @*<td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>*@
-        </tr>
-}
-    </tbody>
-</table>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReservationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AccommodationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LeavingDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoomId)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Discount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DayCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccommodationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeavingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomId)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DayCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                @*<td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@

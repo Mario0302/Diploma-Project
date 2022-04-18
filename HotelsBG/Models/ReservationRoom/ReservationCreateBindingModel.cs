@@ -15,10 +15,10 @@ namespace HotelsBG.Models.ReservationRoom
         public int RoomId { get; set; }
      
         [Required]
-        [Display(Name = "Accommodation Date")]
+        [Display(Name = "Дата на настаняване")]
         public DateTime AccommodationDate { get; set; }
         [Required]
-        [Display(Name = "Leaving Date")]
+        [Display(Name = "Дата на напускане")]
         public DateTime LeavingDate { get; set; }
       
                
