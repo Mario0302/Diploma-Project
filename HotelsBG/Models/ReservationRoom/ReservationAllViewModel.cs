@@ -10,6 +10,7 @@ namespace HotelsBG.Models.ReservationRoom
     public class ReservationAllViewModel
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
 
         public string ReservationDate { get; set; }
