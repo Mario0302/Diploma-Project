@@ -1,13 +1,13 @@
 ﻿@model HotelsBG.Models.ReservationRoom.ReservationCreateBindingModel
 
 <form asp-controller="Reservation" asp-action="Create" method="post">
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center" style="flex-wrap: wrap">
         <label class="font-weight-bold text-left mr-1" asp-for="AccommodationDate">AccommodationDate:</label>
         <div class="mr-1">
             <input class="form-control" min="1" asp-for="AccommodationDate" />
             <span asp-validation-for="AccommodationDate" class="text-danger"></span>
         </div>
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center"style="flex-wrap: wrap;">
             <label class="font-weight-bold text-left mr-1" asp-for="LeavingDate">LeavingDate:</label>
             <div class="mr-1">
                 <input class="form-control" min="1" asp-for="LeavingDate" />

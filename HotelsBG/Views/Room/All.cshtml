@@ -1,109 +1,205 @@
 ﻿@model IEnumerable<HotelsBG.Models.RoomAllViewModel>
 @using HotelsBG.Models.ReservationRoom
 
-@{
-    ViewData["Title"] = "All";
-}
-
+@{ ViewData["Title"] = "All"; }
 <h1>All Rooms</h1>
 
 <p>
     <a asp-action="Create">Create New Room</a>
 </p>
-    <form asp-controller="Room" asp-action="All" method="get">
-        <p>
-            Type: <input type="text" name="SearchStringModel" />
+<form asp-controller="Room" asp-action="All" method="get">
+    <p>
+        Type: <input type="text" name="SearchStringModel" />
+        <input type="submit" value="Filter" />
+        <button type="button" class="btn btn-info"></button>
+</form>
+        <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+                <div class="col-md-10">
+                    <div class="row p-2 bg-white border rounded">
+                        @foreach (var item in Model)
+                        {
+            <div class="row p-2 bg-white border rounded mt-2 w-100">
+                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="@item.Picture"></div>
+                <div class="col-md-8 mt-1">
+                    <div class="d-inline-block align-top">
+                        <h5 class="">@item.RoomName</h5>
+                        <div class="mt-1 mb-1 spec-1 d-inline-block">
+                            <p>@item.Description</p>
+                            <p>Category: @item.CategoryName</p>
+                            <p>Number of beds: @item.NumberOfBed</p>
+                            <p>Extras: @item.Extras</p>
+                        </div>
+                    </div>
+                    <div class="align-items-center align-content-center col-md-3 border-left mt-1 d-inline-block">
+                        <div class="d-flex flex-row align-items-center">
 
-            @*Brand: <input type="text" name="SearchStrinBrand" />
+                            @if (item.Discount != 0)
+                            {
+            <h4 class="mr-1" style="text-decoration: line-through">$@item.Price</h4>
+                                <h4 class="mr-1 text-danger">$@item.Discount</h4>
+                            }
+                            else
+                            {
+                                <h4 class="mr-1">$@item.Price</h4>
+                            }
+                        </div>
 
-                Price: <input type="text" name="SearchStringPrice" />*@
-            <input type="submit" value="Filter" />
-            @*<button type="button" class="btn btn-info"></button>*@
+                        <div>
+                            @await Html.PartialAsync("_ReservationPartialView", new ReservationCreateBindingModel
+                            {
+                                RoomId = item.Id
+                            })
+                        </div>
+                    </div>
+                </div>
+            </div>}
+
+                    </div>
+                </div>
+            </div>
+            <style>
+                body {
+                    background: #eee
+                }
+
+                .ratings i {
+                    font-size: 16px;
+                    color: red
+                }
+
+                .strike-text {
+                    color: red;
+                    text-decoration: line-through
+                }
+
+                .product-image {
+                    width: 100%
+                }
+
+                .dot {
+                    height: 7px;
+                    width: 7px;
+                    margin-left: 6px;
+                    margin-right: 6px;
+                    margin-top: 3px;
+                    background-color: blue;
+                    border-radius: 50%;
+                    display: inline-block
+                }
+
+                .spec-1 {
+                    color: #938787;
+                    font-size: 15px
+                }
+
+                h5 {
+                    font-weight: 400
+                }
+
+                .para {
+                    font-size: 16px
+                }
+            </style>
+            @*<h1>All Rooms</h1>
+
+                <p>
+                    <a asp-action="Create">Create New Room</a>
+                </p>
+                    <form asp-controller="Room" asp-action="All" method="get">
+                        <p>
+                            Type: <input type="text" name="SearchStringModel" />
+
+                            Brand: <input type="text" name="SearchStrinBrand" />
+
+                                Price: <input type="text" name="SearchStringPrice" />
+                            <input type="submit" value="Filter" />
+                            <button type="button" class="btn btn-info"></button>
 
 
 
-    </form>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RoomName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
+                    </form>
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.RoomName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Picture)
-            </th>
-          
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Discount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfBed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Extras)
-            </th>
-            <th>
-                Action
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoomName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CategoryName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Picture)
+                            </th>
 
-            <td>
-
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @*Html.DisplayFor(modelItem => item.Picture)*@
-                <img src="@Html.DisplayFor(modelItem=>item.Picture)" alt="Image" width="100px" />
-            </td>
-            <td>
-
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfBed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Extras)
-            </td>
-            <td>
-                @await Html.PartialAsync("_ReservationPartialView", new ReservationCreateBindingModel
-                {
-                    RoomId = item.Id
-                })
-            </td>
-            @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
-            {
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
-            }
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Discount)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NumberOfBed)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Extras)
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                            <th></th>
                         </tr>
-}
-    </tbody>
-</table>
+                    </thead>
+                    <tbody>
+                @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RoomName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+
+                            <td>
+
+                                @Html.DisplayFor(modelItem => item.CategoryName)
+                            </td>
+                            <td>
+                                Html.DisplayFor(modelItem => item.Picture)
+                                <img src="@Html.DisplayFor(modelItem=>item.Picture)" alt="Image" width="100px" />
+                            </td>
+                            <td>
+
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Discount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumberOfBed)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Extras)
+                            </td>
+                            <td>
+                                @await Html.PartialAsync("_ReservationPartialView", new ReservationCreateBindingModel
+                                {
+                                    RoomId = item.Id
+                                })
+                            </td>
+                            @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                            {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                            }
+                                        </tr>
+                }
+                    </tbody>
+                </table>*@
