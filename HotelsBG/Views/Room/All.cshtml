@@ -11,7 +11,7 @@
     <p>
         Type: <input type="text" name="SearchStringModel" />
         <input type="submit" value="Filter" />
-        <button type="button" class="btn btn-info"></button>
+        @*<button type="button" class="btn btn-info"></button>*@
 </form>
         <div class="container mt-5 mb-5">
             <div class="d-flex justify-content-center row">
@@ -36,13 +36,10 @@
 
                             @if (item.Discount != 0)
                             {
-            <h4 class="mr-1" style="text-decoration: line-through">$@item.Price</h4>
-                                <h4 class="mr-1 text-danger">$@item.Discount</h4>
+            <h4 class="mr-1" style="text-decoration">$@item.Price</h4>
+                                
                             }
-                            else
-                            {
-                                <h4 class="mr-1">$@item.Price</h4>
-                            }
+                          
                         </div>
 
                         <div>
